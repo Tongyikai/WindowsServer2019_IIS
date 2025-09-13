@@ -1,0 +1,5 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-07 14:46:26
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-07 14:46:25 172.31.255.202 GET /api/messages - 8080 - 59.127.34.218 Mozilla/5.0+(iPhone;+CPU+iPhone+OS+18_2+like+Mac+OS+X)+AppleWebKit/605.1.15+(KHTML,+like+Gecko)+Mobile/15E148+Safari+Line/15.13.0 http://msg.r5599.xyz/ 200 0 0 776

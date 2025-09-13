@@ -1,0 +1,7 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-07 14:45:53
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-07 14:45:53 172.31.255.202 GET / - 80 - 147.92.179.105 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 88
+2025-09-07 14:46:25 172.31.255.202 GET / - 80 - 59.127.34.218 Mozilla/5.0+(iPhone;+CPU+iPhone+OS+18_2+like+Mac+OS+X)+AppleWebKit/605.1.15+(KHTML,+like+Gecko)+Mobile/15E148+Safari+Line/15.13.0 - 200 0 0 12
+2025-09-07 14:46:25 172.31.255.202 GET /favicon.ico - 80 - 59.127.34.218 LINE/2025.807.808+CFNetwork/1568.300.101+Darwin/24.2.0 - 404 0 2 5

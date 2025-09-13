@@ -1,0 +1,7 @@
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.csproj.AssemblyReference.cache
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.AssemblyInfoInputs.cache
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.AssemblyInfo.cs
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.csproj.CoreCompileInputs.cache
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Projects\MsgApi\obj\Debug\net8.0\MsgApi.MvcApplicationPartsAssemblyInfo.cache
