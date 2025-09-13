@@ -1,0 +1,10 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-09 02:06:06
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-09 02:06:06 172.31.255.202 GET / - 80 - 147.92.179.111 facebookexternalhit/1.1;line-poker/1.0 - 200 0 0 88
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-09 15:23:25
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-09 15:23:25 172.31.255.202 GET / - 80 - 147.92.179.112 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 87

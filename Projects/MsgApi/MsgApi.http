@@ -1,0 +1,6 @@
+@MsgApi_HostAddress = http://localhost:5145
+
+GET {{MsgApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

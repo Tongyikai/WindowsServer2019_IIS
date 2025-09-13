@@ -1,0 +1,5 @@
+inetpub 資料夾是 IIS 服務的完整資料家
+路徑: C:\inetpub
+
+Projects 是 API 的資料夾
+路徑: C:\Projects

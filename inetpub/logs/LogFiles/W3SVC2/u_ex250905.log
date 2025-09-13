@@ -1,0 +1,110 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 04:20:07
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 04:20:07 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 200 0 0 45
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 04:44:26
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 04:44:26 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 49
+2025-09-05 04:44:26 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 35
+2025-09-05 04:48:31 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 30
+2025-09-05 04:52:24 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 35
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 05:36:07
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 05:36:07 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 74
+2025-09-05 05:39:18 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 24
+2025-09-05 05:47:39 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 21
+2025-09-05 05:48:22 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 60
+2025-09-05 05:52:27 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 6
+2025-09-05 05:52:27 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 43
+2025-09-05 05:52:44 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 23
+2025-09-05 05:52:44 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 26
+2025-09-05 05:57:35 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 22
+2025-09-05 06:03:36 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 33
+2025-09-05 06:03:42 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 25
+2025-09-05 06:04:01 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 24
+2025-09-05 06:13:40 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 29
+2025-09-05 06:13:40 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 32
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 06:29:37
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 06:29:37 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 31
+2025-09-05 06:29:37 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 23
+2025-09-05 06:29:43 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 71
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 03:21:18
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 125.229.232.21 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 53
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 125.229.232.21 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 5
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 03:50:59
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 200 0 0 49
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 404 0 2 1
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 404 0 2 0
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 125.229.232.21 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 3
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 125.229.232.21 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 4
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 04:12:18
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 304 0 0 51
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 12:28:09
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/140.0.0.0+Safari/537.36 - 304 0 0 68
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/140.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 30
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+WOW64;+Trident/7.0;+Touch;+rv:11.0)+like+Gecko - 304 0 0 1
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/140.0.0.0+Safari/537.36 - 304 0 0 26
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 13:23:26
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/140.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 75
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 147.92.179.115 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 43
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 147.92.179.110 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 40
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/140.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 23
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 13:53:02
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 147.92.179.115 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 91
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 101.8.84.95 Mozilla/5.0+(iPhone;+CPU+iPhone+OS+18_5+like+Mac+OS+X)+AppleWebKit/605.1.15+(KHTML,+like+Gecko)+Version/18.5+Mobile/15E148+Safari/604.1 - 200 0 0 29
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 114.39.7.177 Mozilla/5.0+(Linux;+Android+9;+ELE-L29+Build/HUAWEIELE-L29;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/133.0.6943.50+Mobile+Safari/537.36+Line/15.2.1/IAB - 200 0 0 13
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 114.39.7.177 Mozilla/5.0+(Linux;+Android+9;+ELE-L29+Build/HUAWEIELE-L29;+wv)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Version/4.0+Chrome/133.0.6943.50+Mobile+Safari/537.36+Line/15.2.1/IAB http://msg.r5599.xyz/ 404 0 2 8
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 147.92.179.109 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 43
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 14:34:43
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 15:32:29 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 200 0 0 1
+2025-09-05 15:32:29 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 32
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 16:11:49
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 16:11:49 172.31.255.202 GET / - 80 - 49.214.255.21 Mozilla/5.0+(iPhone;+CPU+iPhone+OS+13_2_3+like+Mac+OS+X)+AppleWebKit/605.1.15+(KHTML,+like+Gecko)+Version/13.0.3+Mobile/15E148+Safari/604.1 - 200 0 0 57
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 18:32:11
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 18:32:11 172.31.255.202 GET / - 80 - 147.92.179.113 facebookexternalhit/1.1;line-poker/1.0 - 200 0 64 84
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 21:09:46
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 21:09:46 172.31.255.202 GET /favicon.ico - 80 - 54.248.102.183 python-requests/2.27.1 - 404 0 2 85
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2025-09-05 23:18:34
+#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
+2025-09-05 23:18:34 172.31.255.202 GET / - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 - 304 0 0 74
+2025-09-05 23:18:34 172.31.255.202 GET /favicon.ico - 80 - 172.31.255.1 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/139.0.0.0+Safari/537.36 http://msg.r5599.xyz/ 404 0 2 30
