@@ -1,0 +1,202 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>簡易留言板</title>
+  <style>
+    :root{ --bg:#f7f7f8; --panel:#ffffff; --text:#111827; --muted:#6b7280; --border:#e5e7eb; --primary:#2563eb; --primary-weak:#e5edff; --radius:14px; }
+    *{box-sizing:border-box}
+    body{ margin:0; background:var(--bg); color:var(--text);
+      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif; }
+    .wrap{max-width:760px; margin:32px auto; padding:0 16px;}
+    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+    h1{font-size:22px; margin:0}
+    .card{ background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .compose{ padding:16px; margin-bottom:16px; position:relative; }
+    .compose.locked::after{ content:"🔒 已鎖定：輸入密碼才能留言"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.75); border-radius:var(--radius); color:#111; font-weight:600; letter-spacing:.5px; }
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+    .row > *{flex:1}
+    input, textarea, button{ width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; font:inherit; background:#fff; }
+    textarea{min-height:110px; resize:vertical}
+    button{ background:var(--primary); color:#fff; border:none; font-weight:600; cursor:pointer; }
+    button:disabled{opacity:.6; cursor:not-allowed}
+    .muted{color:var(--muted); font-size:14px}
+    .unlock{ padding:14px 16px; margin-bottom:16px; border:1px dashed var(--border); border-radius:var(--radius); background:var(--primary-weak); display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .unlock input{max-width:220px}
+    .messages{display:grid; gap:10px}
+    .msg{ padding:14px 16px; border:1px solid var(--border); border-radius:12px; background:#fff; }
+    .msgHead{display:flex; gap:8px; align-items:baseline; flex-wrap:wrap}
+    .name{font-weight:700}
+    .time{color:var(--muted); font-size:14px}
+    .content{white-space:pre-wrap; margin-top:6px}
+    .empty{ padding:24px; text-align:center; color:var(--muted); border:1px dashed var(--border); border-radius:12px; background:#fff; }
+    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:13px}
+    .tools{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .tools button.secondary{ background:#fff; color:var(--text); border:1px solid var(--border); }
+    .status{margin-top:8px; font-size:14px}
+    .status.ok{color:#16a34a}.status.err{color:#b91c1c}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>簡易留言板</h1>
+      <span class="muted">任何人可閱讀｜輸入密碼才能留言</span>
+    </header>
+
+    <!-- 解鎖區（輸入密碼才能留言） -->
+    <div class="unlock card" id="unlockBox" aria-live="polite">
+      <label for="pwd" class="muted">留言密碼：</label>
+      <input id="pwd" type="password" placeholder="請輸入密碼" autocomplete="current-password" />
+      <button id="unlockBtn" style="width:auto; padding-inline:16px;">解鎖留言</button>
+      <span id="unlockMsg" class="muted" style="margin-left:6px;"></span>
+    </div>
+
+    <!-- 留言輸入區（已改為呼叫 API） -->
+    <form class="compose card locked" id="composeForm" aria-disabled="true">
+      <div class="row" style="margin-bottom:10px">
+        <input id="name" type="text" placeholder="人物（必填）" maxlength="40" />
+        <input id="when" type="text" placeholder="時間（自動填寫，可自行修改）" />
+      </div>
+      <textarea id="content" placeholder="內容（必填）"></textarea>
+      <div class="tools">
+        <button id="submitBtn" type="submit" disabled>送出留言</button>
+        <button id="reloadBtn" type="button" class="secondary" disabled title="重新載入伺服器上的留言">重新載入</button>
+      </div>
+      <div id="status" class="status muted"></div>
+      <div class="muted" style="margin-top:8px">
+        備註：留言將儲存在伺服器的資料庫（SQL Server）。
+      </div>
+    </form>
+
+    <!-- 留言列表（改為從 API 載入） -->
+    <section class="card" style="padding:10px 12px;">
+      <div class="muted" style="padding:4px 6px;">最新留言</div>
+      <div id="messages" class="messages" role="feed"></div>
+      <div id="emptyState" class="empty" hidden>目前沒有留言。</div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> 簡易留言板 · 單一 HTML 檔（改為連線伺服器 API）
+    </footer>
+  </div>
+
+
+<script>
+  const API = "http://msg.r5599.xyz:8080/api/messages";
+  const WRITE_PASSWORD = "1234";
+
+  const $ = (sel) => document.querySelector(sel);
+  const nowTW = () =>
+    new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" })
+      .format(new Date());
+
+  function setUnlocked(on){
+    const compose = $("#composeForm");
+    const submitBtn = $("#submitBtn");
+    const unlockBox = $("#unlockBox");
+    if(on){
+      compose.classList.remove("locked");
+      compose.setAttribute("aria-disabled","false");
+      if(submitBtn) submitBtn.disabled = false;
+      unlockBox.style.display = "none";
+      sessionStorage.setItem("mb_unlocked","1");
+    }else{
+      compose.classList.add("locked");
+      compose.setAttribute("aria-disabled","true");
+      if(submitBtn) submitBtn.disabled = true;
+      unlockBox.style.display = "";
+      sessionStorage.removeItem("mb_unlocked");
+    }
+  }
+
+  async function render(){
+    const box = $("#messages");
+    const empty = $("#emptyState");
+    box.innerHTML = "";
+    try{
+      const res = await fetch(API);
+      if(!res.ok) throw new Error(`HTTP ${res.status}`);
+      const list = await res.json();
+
+      if(!list || list.length===0){
+        empty.hidden = false;
+        return;
+      }
+      empty.hidden = true;
+
+      for(const m of list){
+        const el = document.createElement("article");
+        el.className = "msg";
+        el.innerHTML = `
+          <div class="msgHead">
+            <div class="name">${m.name || "（匿名）"}</div>
+            <div class="time">${m.whenText || ""}</div>
+          </div>
+          <div class="content">${m.content || ""}</div>
+        `;
+        box.appendChild(el);
+      }
+    }catch(err){
+      empty.hidden = false;
+      empty.textContent = "讀取留言失敗：" + err.message;
+    }
+  }
+
+  // 初始化
+  $("#year").textContent = new Date().getFullYear();
+  $("#when").value = nowTW();
+  render();
+  if(sessionStorage.getItem("mb_unlocked")==="1"){ setUnlocked(true); }
+
+  // 解鎖
+  $("#unlockBtn").addEventListener("click", ()=>{
+    const input = $("#pwd");
+    const msg = $("#unlockMsg");
+    if(!input.value.trim()){
+      msg.textContent = "請輸入密碼。";
+      return;
+    }
+    if(input.value === WRITE_PASSWORD){
+      msg.textContent = "已解鎖，可以留言！";
+      setUnlocked(true);
+      $("#name").focus();
+    }else{
+      msg.textContent = "密碼錯誤。";
+      input.select();
+    }
+  });
+  $("#pwd").addEventListener("keydown",(e)=>{
+    if(e.key==="Enter"){ e.preventDefault(); $("#unlockBtn").click(); }
+  });
+
+  // 送出留言
+  $("#composeForm").addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    const name = $("#name").value.trim();
+    const when = $("#when").value.trim();
+    const content = $("#content").value.trim();
+    if(!name){ alert("請填寫人物。"); return; }
+    if(!content){ alert("請填寫內容。"); return; }
+
+    try{
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, whenText: when, content })
+      });
+      if(!res.ok) throw new Error(`HTTP ${res.status}`);
+      $("#content").value = "";
+      $("#when").value = nowTW();
+      await render();
+    }catch(err){
+      alert("寫入資料庫失敗：" + err.message);
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

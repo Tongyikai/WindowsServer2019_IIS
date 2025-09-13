@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html Lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ENTRUST</title>
+        <!-- <link rel="stylesheet" href="public/stylesheets/index.css"> -->
+        <link rel="stylesheet" href="public/stylesheets/index.css">
+    </head>
+
+    <body>
+        <section>
+            <div class="container">
+                <span></span>
+                <span></span>
+                <span></span>
+                <form id="SignInForm" name="SignInForm">
+                    <h2>Login</h2>
+                    <div class="inputBox">
+                        <input type="text" name="Username" placeholder="Username">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="Password" placeholder="Password">
+                    </div>
+                    <div class="inputBox group">
+                        <a href="#">Forgot Password</a>
+                        <a href="#" id="SignUp">Signup</a>
+                    </div>
+                    <div class="inputBox">
+                        <input type="button" value="SignIn" onclick="checkSignInForm();">
+                    </div>
+                </form>
+                <form id="SignUpForm" name="SignUpForm">
+                    <h2>Registration</h2>
+                    <div class="inputBox">
+                        <input type="text" name="Username" placeholder="Username">
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="Email" placeholder="Email Address">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="CreatePassword" placeholder="Create Password">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="ConfirmPassword" placeholder="Confirm Password">
+                    </div>
+                    <div class="inputBox">
+                        <input type="button" value="RegisterAccount" onclick="checkSignUpForm();">
+                    </div>
+                    <div class="inputBox group">
+                        <a href="#">Already Have an Account ? <b id="SignIn">Login</b></a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+
+    <script type="text/javascript" src="public/scripts/clientAJAX.js"></script>
+    <script type="text/javascript" src="public/scripts/formCheck.js"></script>
+    <script>
+        // 切換Sign in & Sign up 功能
+        let signUp = document.querySelector( "#SignUp" );
+        let signIn = document.querySelector( "#SignIn" );
+        let body = document.querySelector( "body" );
+        signUp.onclick = function() {
+            body.classList.add( "SignUp" );
+        }
+        signIn.onclick = function() {
+            body.classList.remove( "SignUp" );
+        }
+
+        let emailCorrect = checkEmailFormat;
+        let nameLengthCorrect = checkNameLengthFormat;
+        let includeSymbolsCorrect = checkIncludeSymbolsFormat;
+        let passwordCorrect = checkPasswordFormat;
+        let blankOrEmpty = checkBlankFormat;
+        
+        let clientSignIn = userLogin;
+        let clientSignUp = userRegister;
+        let autoLogin = loginAuthorization;
+
+        // 嘗試登入，有認證就會進入大廳
+        autoLogin();
+        // deleteAllCookies();
+        console.log( "my cookie: " + document.cookie );
+
+        // 登入表單檢查
+        function checkSignInForm() {
+            var form = document.forms[ "SignInForm" ];
+            // formCheck.js--自行檢查格式是否正確
+            if ( nameLengthCorrect( form.Username.value ) ) {
+                alert( "Error: Name exceeds 24 characters." );
+            
+            } else if ( includeSymbolsCorrect( form.Username.value ) ) {
+                alert( "Error: Name has other symbols." );
+
+            } else if ( blankOrEmpty( form.Username.value ) ) {
+                alert( "Error: Invalid Name." );
+
+            } else if ( !passwordCorrect( form.Password.value ) ) {
+                alert( "Error: Password 8 to 16 characters, uppercase English words, Need numbers." );
+
+            } else {
+                // clientAJAX.js--訪問Server使用者名稱可否使用
+                clientSignIn( form.Username.value, form.Password.value );
+            }
+        }
+
+        // 註冊表單價差
+        function checkSignUpForm() {
+            
+            var form = document.forms[ "SignUpForm" ];
+            if ( nameLengthCorrect( form.Username.value ) ) {
+                alert( "Error: Name exceeds 24 characters." );
+
+            } else if ( includeSymbolsCorrect( form.Username.value ) ) {
+                alert( "Error: Name has other symbols." );
+
+            } else if ( blankOrEmpty( form.Username.value ) ) {
+                alert( "Error: Invalid Name." );
+
+            } else if ( !emailCorrect( form.Email.value ) ) {
+                alert( "Error: Invalid Email." );
+
+            } else if ( !passwordCorrect( form.CreatePassword.value ) ) {
+                alert( "Error: Password 8 to 16 characters, uppercase English words, Need numbers." );
+
+            } else if ( form.CreatePassword.value != form.ConfirmPassword.value ) {
+                alert( "Error: Passwords are not the same." );
+
+            } else {    
+                clientSignUp( form.Username.value, form.Email.value, form.CreatePassword.value );
+
+            }
+        }
+
+        // 清除 cookies
+        function deleteAllCookies() {
+            const cookies = document.cookie.split( ";" );
+            for ( let i = 0; i < cookies.length; i++ ) {
+                const cookie = cookies[ i ];
+                const eqPos = cookie.indexOf( "=" );
+                const name = eqPos > -1 ? cookie.substr( 0, eqPos ) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+        }
+    </script>
+</html>
