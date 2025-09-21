@@ -2,8 +2,9 @@
  *                      網頁功能                     *
  #*********#*********#*********#*********#********* */
  
-CLEAR_TOKEN = "authorization=";
-HOST_URL = "http://127.0.0.1:8888/index";
+// ===== 這兩行已改成同網域 =====
+CLEAR_TOKEN = "authorization=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+HOST_URL = `${window.location.origin}/index`;
 
 /* *********#*********#*********#*********#*********#
 *					  Notify Bell 				    *
@@ -138,8 +139,6 @@ var loadFile = function( event ) {
         cancelUploadAvatar(); // 取消頭像
     } else {
         // avatar = uploadAvatar;
-
-
     }
 }
 
@@ -193,12 +192,10 @@ window.addEventListener( "load", () => {
 
         var inviteMember = [];
         for ( var i = 0; i < circleMember.length; i++ ) { // 取得邀請成員的username
-            // console.log( buddyData[ circleMember[ i ] ].username );
             inviteMember[ i ] = buddyData[ circleMember[ i ] ].username;
         }
         document.getElementById( "circle_inviteMember" ).value = inviteMember; // 邀請成員的username 放到隱藏欄位裡
         console.log( "inviteMember: " + inviteMember );
-        // console.log( document.getElementById( "circle_inviteMember" ).value );
 
         checkCircle( form );
         if ( checkCircle( form ) ) createCircle( form );
@@ -235,41 +232,35 @@ function totalAmount() {
 
 // 邀請成為Circle成員
 var circleMember = []; // 存放的是buddyData的序號
-function inviteMember( obj ) { // 取得好友視窗底下的標籤內容 DOM(Document Object Model)
+function inviteMember( obj ) {
     let imgData = obj.children[ 0 ].children[ 0 ].src; // 取得圖檔
     let name = obj.children[ 1 ].children[ 1 ].textContent; // 取得名字
     let number = obj.children[ 1 ].children[ 0 ].textContent; // #取得編號
     var ordinalNum = number.substring( 1 ); // 把編號#, 移除
     ordinalNum--; // 減1, 為buddyData的陣列位置
 
-    // 尋找是否有符合的元素
-    if ( circleMember.indexOf( ordinalNum ) == -1 ) { // Circle沒有邀請為成員, 可以加入
-        // console.log( "++" );
+    if ( circleMember.indexOf( ordinalNum ) == -1 ) { // 未加入 → 可加入
         circleMember.push( ordinalNum );
-
-        // 手創標籤內容
         var td = document.querySelector( ".container_club .box .buddyCircle" );
         td.innerHTML += '<div class="buddyLabel" id="' + ordinalNum + '" name="circle_member" onclick="removeLabel( this )">' +
                             '<img class="buddyLabelAvatar" src="' + imgData + '">' +
                             '<a>' + name + '</a>' +
                         '</div>&emsp;';
     }
-    totalAmount(); // 更新總金額
+    totalAmount();
     console.log( "Join circle(Ordinal): " + circleMember );
 }
 
 function removeLabel( obj ) {
     let ordinalNum = obj.id;
-    circleMember = circleMember.filter( function( item ) { // 陣列中刪除特定元素
-        return item != ordinalNum;
-    });
+    circleMember = circleMember.filter( function( item ) { return item != ordinalNum; });
     console.log( "Delete circle(Ordinal): " + circleMember );
     obj.remove();
     totalAmount();
 }
 
 /* *********#*********#*********#*********#*********#
-*				       取得個人資料			          *
+*				       取得個人資料			      *
 #*********#*********#*********#*********#********* */
 function displayProfile() {
     loadingProfile();
@@ -290,9 +281,9 @@ function unreadNotification( bool ) {
 /* *********#*********#*********#*********#*********#
 *				 給外部引用 clientAJAX.js			  *
 #*********#*********#*********#*********#********* */
-let buddyData; // 好友資料, 給其他 method 使用, 頁面載入就會執行(就有資料)
+let buddyData; // 好友資料
 function setProfile( profileData, buddyListData ) { // 個人資料顯示
-    if ( profileData.unreadMessage.length == 0 ) { // 陣列為空
+    if ( profileData.unreadMessage.length == 0 ) {
         console.log( "profileData.unreadMessage = empty" );
     } else {
         unreadNotification( true ); // 顯示通知訊息
@@ -301,7 +292,6 @@ function setProfile( profileData, buddyListData ) { // 個人資料顯示
     buddyData = buddyListData;
     var count = buddyListData.length;
     for ( var i = 0; i < count; i++ ) {
-        // console.log( buddyListData[ i ]  );
         dynamicallyAddBuddyList( buddyListData[ i ].familyName, buddyListData[ i ].givenName, buddyListData[ i ].nickname, buddyListData[ i ].avatar64code, buddyListData[ i ].jobTitle, i );
     }
 }
