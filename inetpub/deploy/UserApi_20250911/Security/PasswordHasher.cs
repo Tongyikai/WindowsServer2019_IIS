@@ -10,17 +10,23 @@ namespace UserApi_20250911.Security
             // 32 bytes salt
             byte[] salt = RandomNumberGenerator.GetBytes(32);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> developer
             // PBKDF2-HMACSHA256 ? 32 bytes key
             using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
             byte[] key = pbkdf2.GetBytes(32);
 
             // ?????,????? salt/hash;iterations ????????
+<<<<<<< HEAD
 =======
             // PBKDF2-HMACSHA256 → 32 bytes key
             using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
             byte[] key = pbkdf2.GetBytes(32);
 
             // 回傳 salt/hash;iterations 已鎖定在參數
+>>>>>>> developer
+=======
 >>>>>>> developer
             return (salt, key);
         }

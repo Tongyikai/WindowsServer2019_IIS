@@ -77,3 +77,31 @@ C:\inetpub\deploy\UserApi_20250911\obj\Release\net8.0\refint\UserApi_20250911.dl
 C:\inetpub\deploy\UserApi_20250911\obj\Release\net8.0\UserApi_20250911.pdb
 C:\inetpub\deploy\UserApi_20250911\obj\Release\net8.0\UserApi_20250911.genruntimeconfig.cache
 C:\inetpub\deploy\UserApi_20250911\obj\Release\net8.0\ref\UserApi_20250911.dll
+<<<<<<< HEAD
+=======
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\web.config
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\appsettings.Development.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\appsettings.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\UserApi_20250911.deps.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\UserApi_20250911.runtimeconfig.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\web.config
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\appsettings.Development.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\appsettings.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\UserApi_20250911.deps.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\UserApi_20250911.runtimeconfig.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\web.config
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\appsettings.Development.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\appsettings.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\UserApi_20250911.deps.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\UserApi_20250911.runtimeconfig.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\web.config
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\appsettings.Development.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\appsettings.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\UserApi_20250911.deps.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\UserApi_20250911.runtimeconfig.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\publish\web.config
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\publish\appsettings.Development.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\publish\appsettings.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\publish\UserApi_20250911.deps.json
+C:\inetpub\deploy\UserApi_20250911\bin\Release\net8.0\publish\publish\publish\publish\publish\UserApi_20250911.runtimeconfig.json
+>>>>>>> developer
