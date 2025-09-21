@@ -4,3 +4,4 @@ namespace UserApi_20250911.Models
     public record RegisterResponse(int UserId, string Message);
     public record LoginRequest(string Username, string Password);
 }
+

@@ -219,8 +219,6 @@
 2025-09-08 11:07:55 172.31.255.202 GET /.env - 80 - 206.189.130.171 Mozilla/5.0;+Keydrop.io/1.0(onlyscans.com/about); - 404 0 2 228
 2025-09-08 11:07:55 172.31.255.202 GET /.git/config - 80 - 206.189.130.171 Mozilla/5.0;+Keydrop.io/1.0(onlyscans.com/about); - 404 0 2 232
 2025-09-08 11:23:40 172.31.255.202 GET / - 80 - 196.251.69.194 Mozilla/5.0+(X11;+Linux+x86_64;+rv:140.0)+Gecko/20100101+Firefox/140.0 - 200 0 0 326
-<<<<<<< HEAD
-<<<<<<< HEAD
 #Software: Microsoft Internet Information Services 10.0
 #Version: 1.0
 #Date: 2025-09-08 12:12:36
@@ -667,7 +665,3 @@
 #Date: 2025-09-08 23:45:43
 #Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status time-taken
 2025-09-08 23:45:43 172.31.255.202 GET / - 80 - 45.135.193.253 - - 200 0 0 297
-=======
->>>>>>> origin/main
-=======
->>>>>>> origin/developer
