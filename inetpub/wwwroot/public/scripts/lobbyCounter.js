@@ -2,9 +2,14 @@
  *                      網頁功能                     *
  #*********#*********#*********#*********#********* */
  
+<<<<<<< HEAD
 // ===== 這兩行已改成同網域 =====
 CLEAR_TOKEN = "authorization=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 HOST_URL = `${window.location.origin}/index`;
+=======
+CLEAR_TOKEN = "authorization=";
+HOST_URL = "http://127.0.0.1:8888/index";
+>>>>>>> origin/developer
 
 /* *********#*********#*********#*********#*********#
 *					  Notify Bell 				    *
@@ -139,6 +144,11 @@ var loadFile = function( event ) {
         cancelUploadAvatar(); // 取消頭像
     } else {
         // avatar = uploadAvatar;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/developer
     }
 }
 
@@ -192,10 +202,18 @@ window.addEventListener( "load", () => {
 
         var inviteMember = [];
         for ( var i = 0; i < circleMember.length; i++ ) { // 取得邀請成員的username
+<<<<<<< HEAD
+=======
+            // console.log( buddyData[ circleMember[ i ] ].username );
+>>>>>>> origin/developer
             inviteMember[ i ] = buddyData[ circleMember[ i ] ].username;
         }
         document.getElementById( "circle_inviteMember" ).value = inviteMember; // 邀請成員的username 放到隱藏欄位裡
         console.log( "inviteMember: " + inviteMember );
+<<<<<<< HEAD
+=======
+        // console.log( document.getElementById( "circle_inviteMember" ).value );
+>>>>>>> origin/developer
 
         checkCircle( form );
         if ( checkCircle( form ) ) createCircle( form );
@@ -232,35 +250,62 @@ function totalAmount() {
 
 // 邀請成為Circle成員
 var circleMember = []; // 存放的是buddyData的序號
+<<<<<<< HEAD
 function inviteMember( obj ) {
+=======
+function inviteMember( obj ) { // 取得好友視窗底下的標籤內容 DOM(Document Object Model)
+>>>>>>> origin/developer
     let imgData = obj.children[ 0 ].children[ 0 ].src; // 取得圖檔
     let name = obj.children[ 1 ].children[ 1 ].textContent; // 取得名字
     let number = obj.children[ 1 ].children[ 0 ].textContent; // #取得編號
     var ordinalNum = number.substring( 1 ); // 把編號#, 移除
     ordinalNum--; // 減1, 為buddyData的陣列位置
 
+<<<<<<< HEAD
     if ( circleMember.indexOf( ordinalNum ) == -1 ) { // 未加入 → 可加入
         circleMember.push( ordinalNum );
+=======
+    // 尋找是否有符合的元素
+    if ( circleMember.indexOf( ordinalNum ) == -1 ) { // Circle沒有邀請為成員, 可以加入
+        // console.log( "++" );
+        circleMember.push( ordinalNum );
+
+        // 手創標籤內容
+>>>>>>> origin/developer
         var td = document.querySelector( ".container_club .box .buddyCircle" );
         td.innerHTML += '<div class="buddyLabel" id="' + ordinalNum + '" name="circle_member" onclick="removeLabel( this )">' +
                             '<img class="buddyLabelAvatar" src="' + imgData + '">' +
                             '<a>' + name + '</a>' +
                         '</div>&emsp;';
     }
+<<<<<<< HEAD
     totalAmount();
+=======
+    totalAmount(); // 更新總金額
+>>>>>>> origin/developer
     console.log( "Join circle(Ordinal): " + circleMember );
 }
 
 function removeLabel( obj ) {
     let ordinalNum = obj.id;
+<<<<<<< HEAD
     circleMember = circleMember.filter( function( item ) { return item != ordinalNum; });
+=======
+    circleMember = circleMember.filter( function( item ) { // 陣列中刪除特定元素
+        return item != ordinalNum;
+    });
+>>>>>>> origin/developer
     console.log( "Delete circle(Ordinal): " + circleMember );
     obj.remove();
     totalAmount();
 }
 
 /* *********#*********#*********#*********#*********#
+<<<<<<< HEAD
 *				       取得個人資料			      *
+=======
+*				       取得個人資料			          *
+>>>>>>> origin/developer
 #*********#*********#*********#*********#********* */
 function displayProfile() {
     loadingProfile();
@@ -281,9 +326,15 @@ function unreadNotification( bool ) {
 /* *********#*********#*********#*********#*********#
 *				 給外部引用 clientAJAX.js			  *
 #*********#*********#*********#*********#********* */
+<<<<<<< HEAD
 let buddyData; // 好友資料
 function setProfile( profileData, buddyListData ) { // 個人資料顯示
     if ( profileData.unreadMessage.length == 0 ) {
+=======
+let buddyData; // 好友資料, 給其他 method 使用, 頁面載入就會執行(就有資料)
+function setProfile( profileData, buddyListData ) { // 個人資料顯示
+    if ( profileData.unreadMessage.length == 0 ) { // 陣列為空
+>>>>>>> origin/developer
         console.log( "profileData.unreadMessage = empty" );
     } else {
         unreadNotification( true ); // 顯示通知訊息
@@ -292,6 +343,10 @@ function setProfile( profileData, buddyListData ) { // 個人資料顯示
     buddyData = buddyListData;
     var count = buddyListData.length;
     for ( var i = 0; i < count; i++ ) {
+<<<<<<< HEAD
+=======
+        // console.log( buddyListData[ i ]  );
+>>>>>>> origin/developer
         dynamicallyAddBuddyList( buddyListData[ i ].familyName, buddyListData[ i ].givenName, buddyListData[ i ].nickname, buddyListData[ i ].avatar64code, buddyListData[ i ].jobTitle, i );
     }
 }
@@ -340,4 +395,8 @@ displayYear();
 displayMonth();
 displayDay();
 displayProfile();
+<<<<<<< HEAD
 dynamicallyDate();
+=======
+dynamicallyDate();
+>>>>>>> origin/developer
