@@ -1,12 +1,36 @@
 using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
+<<<<<<< HEAD
 using UserApi_20250911.Models;     // ? ?? DTO ????
 using UserApi_20250911.Security;   // ? ????????????
 
 var builder = WebApplication.CreateBuilder(args);
 
 // -- Services(???? Build ????)
+=======
+
+// === 內嵌 DTO（維持原命名空間以相容你原本 using） ===
+namespace UserApi_20250911.Models
+{
+    public record RegisterRequest(string Username, string Email, string Password);
+    public record RegisterResponse(int UserId, string Message);
+    public record LoginRequest(string Username, string Password);
+}
+
+using UserApi_20250911.Models;     // DTO
+using UserApi_20250911.Security;   // PasswordHasher
+
+// === JWT 相關 ===
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// -- Services
+>>>>>>> developer
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,14 +43,27 @@ builder.Services.AddCors(options =>
         .SetIsOriginAllowed(_ => true));
 });
 
+<<<<<<< HEAD
 var app = builder.Build();  // ? ? Build ? app,?? Use ????
+=======
+// 讀取 JWT 設定
+var jwtKey = builder.Configuration["Jwt:Key"] ?? "DEV_ONLY_SUPER_SECRET_MIN_32_CHARS_KEY_CHANGE_ME_123456";
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "Entrust";
+var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+
+var app = builder.Build();
+>>>>>>> developer
 
 // -- Middlewares
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors();
 
+<<<<<<< HEAD
 // -- ????
+=======
+// -- 健康檢查 / DB Ping
+>>>>>>> developer
 app.MapGet("/diag/db-ping", async (IConfiguration cfg) =>
 {
     string cs = cfg.GetConnectionString("DefaultConnection") ?? "(null)";
@@ -45,8 +82,12 @@ app.MapGet("/diag/db-ping", async (IConfiguration cfg) =>
     }
 });
 
+<<<<<<< HEAD
 
 // -- ?? API
+=======
+// -- 註冊 API（保留你原本流程，僅把 PasswordAlgo 標記修正）
+>>>>>>> developer
 app.MapPost("/auth/register", async (RegisterRequest req, IConfiguration cfg) =>
 {
     if (string.IsNullOrWhiteSpace(req.Username) || req.Username.Length > 50)
@@ -57,7 +98,11 @@ app.MapPost("/auth/register", async (RegisterRequest req, IConfiguration cfg) =>
         return Results.BadRequest(new { error = "Invalid password." });
 
     var cs = cfg.GetConnectionString("DefaultConnection")
+<<<<<<< HEAD
               ?? Environment.GetEnvironmentVariable("CONNSTR_DEFAULT"); // ?????????
+=======
+              ?? Environment.GetEnvironmentVariable("CONNSTR_DEFAULT");
+>>>>>>> developer
 
     if (string.IsNullOrWhiteSpace(cs))
     	return Results.Problem("Missing connection string 'ConnectionStrings:DefaultConnection'.");
@@ -82,7 +127,11 @@ app.MapPost("/auth/register", async (RegisterRequest req, IConfiguration cfg) =>
 
         const string sqlInsertUser = @"
             INSERT INTO dbo.Users(Username, Email, PasswordHash, PasswordSalt, PasswordAlgo)
+<<<<<<< HEAD
             VALUES (@Username, @Email, @Hash, @Salt, N'SHA256');
+=======
+            VALUES (@Username, @Email, @Hash, @Salt, N'PBKDF2-SHA256');
+>>>>>>> developer
             SELECT CAST(SCOPE_IDENTITY() AS INT);";
         int userId = await conn.ExecuteScalarAsync<int>(sqlInsertUser,
             new { req.Username, req.Email, Hash = hash, Salt = salt }, tx);
@@ -105,4 +154,84 @@ app.MapPost("/auth/register", async (RegisterRequest req, IConfiguration cfg) =>
     }
 });
 
+<<<<<<< HEAD
+=======
+// -- 登入：成功回傳 { authorization: "<JWT_TOKEN>" }（配合前端 clientAJAX.js 的流程）
+app.MapPost("/auth/login", async (LoginRequest req, IConfiguration cfg) =>
+{
+    if (string.IsNullOrWhiteSpace(req.Username) || string.IsNullOrWhiteSpace(req.Password))
+        return Results.Ok(new { authorization = "empty" }); // 與前端既有流程相容
+
+    var cs = cfg.GetConnectionString("DefaultConnection")
+              ?? Environment.GetEnvironmentVariable("CONNSTR_DEFAULT");
+    using var conn = new SqlConnection(cs);
+
+    // 讀取使用者與密碼雜湊
+    var sql = @"SELECT ID, Username, PasswordHash, PasswordSalt FROM dbo.Users WHERE Username=@Username";
+    var user = await conn.QueryFirstOrDefaultAsync(sql, new { req.Username });
+    if (user == null) return Results.Ok(new { authorization = "empty" });
+
+    byte[] hash = (byte[])user.PasswordHash;
+    byte[] salt = (byte[])user.PasswordSalt;
+
+    if (!PasswordHasher.Verify(req.Password, salt, hash))
+        return Results.Ok(new { authorization = "empty" });
+
+    // 產生 JWT
+    var claims = new[]
+    {
+        new Claim(JwtRegisteredClaimNames.Sub, ((int)user.ID).ToString()),
+        new Claim(JwtRegisteredClaimNames.UniqueName, (string)user.Username),
+        new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
+    };
+    var creds = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+    var token = new JwtSecurityToken(
+        issuer: jwtIssuer,
+        audience: jwtIssuer,
+        claims: claims,
+        notBefore: DateTime.UtcNow,
+        expires: DateTime.UtcNow.AddHours(8),
+        signingCredentials: creds
+    );
+    var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+    // 回傳給前端 → 前端寫 cookie 並呼叫 /auth/me
+    return Results.Ok(new { authorization = jwt });
+});
+
+// -- 用 Token 取得目前身分：成功回 { authorization = "Okay", userId, username }
+app.MapPost("/auth/me", (HttpContext http) =>
+{
+    string? auth = http.Request.Headers.Authorization;
+    if (string.IsNullOrWhiteSpace(auth) || !auth.StartsWith("Bearer "))
+        return Results.Ok(new { authorization = "NotOkay" });
+
+    var token = auth.Substring("Bearer ".Length).Trim();
+    var handler = new JwtSecurityTokenHandler();
+
+    try
+    {
+        var principal = handler.ValidateToken(token, new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = jwtIssuer,
+            ValidateAudience = true,
+            ValidAudience = jwtIssuer,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = signingKey,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.FromMinutes(2)
+        }, out var _);
+
+        var sub  = principal.FindFirstValue(JwtRegisteredClaimNames.Sub);
+        var name = principal.FindFirstValue(JwtRegisteredClaimNames.UniqueName);
+        return Results.Ok(new { authorization = "Okay", userId = sub, username = name });
+    }
+    catch
+    {
+        return Results.Ok(new { authorization = "NotOkay" });
+    }
+});
+
+>>>>>>> developer
 app.Run();
